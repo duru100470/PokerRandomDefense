@@ -17,6 +17,7 @@ namespace PokerRandomDefense.GamePlay
         public Suit mSuit { get; set; }
         public int mIndex { get; set; }
         public int mStat { get; set; }
+        public int mPrice { get; set; }
 
         public Card(Suit suit, int index)
         {

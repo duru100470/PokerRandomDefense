@@ -15,4 +15,11 @@ public static class ListExtensions
             values[i] = value;
         }
     }
+
+    public static T Pop<T>(this IList<T> values)
+    {
+        T ret = values[0];
+        values.RemoveAt(0);
+        return ret;
+    }
 }
