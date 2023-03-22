@@ -10,8 +10,9 @@ namespace PokerRandomDefense.GamePlay
     public class Market : MonoBehaviour
     {
         [Inject]
-        private readonly GameStats mGameStats;
-        private List<Card> deck = new List<Card>();
+        private readonly GameStats _GameStats;
+        [Inject]
+        private readonly Deck _Deck;
         private List<Card> availableCards = new List<Card>();
         private int deckCount = 0;
         [SerializeField]
@@ -20,25 +21,6 @@ namespace PokerRandomDefense.GamePlay
         private int rerollPrice = 2;
 
         public List<Card> AvailableCards => availableCards;
-
-        private void Awake()
-        {
-            RefreshDeck();
-        }
-
-        public void RefreshDeck()
-        {
-            foreach (Card.Suit suit in (Card.Suit[]) Enum.GetValues(typeof(Card.Suit)))
-            {
-                for (int i = 0; i < 13; i++)
-                {
-                    deck.Add(new Card(suit, i));
-                }
-            }
-
-            deck.Shuffle();
-            deckCount++;
-        }
 
         public Card BuyCard(int index)
         {
@@ -49,23 +31,23 @@ namespace PokerRandomDefense.GamePlay
 
         public bool Reroll()
         {
-            if (mGameStats.Gold < rerollPrice) return false;
-            mGameStats.Gold -= rerollPrice;
+            // if (_GameStats.Gold < rerollPrice) return false;
+            // _GameStats.Gold -= rerollPrice;
 
-            availableCards.Clear();
+            // availableCards.Clear();
 
-            for (int i = 0; i < availableCardCount; i++)
-            {
-                if (deck.Count > 0)
-                {
-                    availableCards.Add(deck.Pop());
-                }
-                else
-                {
-                    RefreshDeck();
-                    availableCards.Add(deck.Pop());
-                }
-            }
+            // for (int i = 0; i < availableCardCount; i++)
+            // {
+            //     if (_Deck.Count > 0)
+            //     {
+            //         availableCards.Add(_Deck.Pop());
+            //     }
+            //     else
+            //     {
+            //         RefreshDeck();
+            //         availableCards.Add(_Deck.Pop());
+            //     }
+            // }
 
             return true;
         }

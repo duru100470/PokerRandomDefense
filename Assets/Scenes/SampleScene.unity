@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacfd5b2622b66f4eb7d02808453facf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableCardCount: 5
+  rerollPrice: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152647823660395809, guid: e946c64e76c6c3a4e80b44767dad91ae, type: 3}
       propertyPath: autoInjectGameObjects.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9152647823660395809, guid: e946c64e76c6c3a4e80b44767dad91ae, type: 3}
       propertyPath: autoInjectGameObjects.Array.data[0]
