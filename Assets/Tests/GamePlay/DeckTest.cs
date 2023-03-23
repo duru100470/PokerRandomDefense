@@ -30,8 +30,8 @@ public class DeckTest
         for (int i = 0; i < 52; i++)
         {
             var card = deck.Draw();
-            numbers[card.mIndex]++;
-            suits[(int)card.mSuit]++;
+            numbers[card.Index]++;
+            suits[(int)card.Suit]++;
         }
 
         foreach (var i in numbers)

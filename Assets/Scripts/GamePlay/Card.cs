@@ -6,7 +6,7 @@ namespace PokerRandomDefense.GamePlay
 {
     public class Card
     {
-        public enum Suit
+        public enum CardSuit
         {
             Clubs,
             Diamonds,
@@ -14,15 +14,15 @@ namespace PokerRandomDefense.GamePlay
             Spades
         }
 
-        public Suit mSuit { get; set; }
-        public int mIndex { get; set; }
-        public int mStat { get; set; }
-        public int mPrice { get; set; }
+        public CardSuit Suit { get; set; } = default;
+        public int Index { get; set; } = 0;
+        public int Stat { get; set; } = 0;
+        public int Price { get; set; } = 0;
 
-        public Card(Suit suit, int index)
+        public Card(CardSuit suit, int index)
         {
-            mSuit = suit;
-            mIndex = index;
+            Suit = suit;
+            Index = index;
         }
     }
 }

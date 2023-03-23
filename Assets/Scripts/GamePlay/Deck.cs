@@ -5,18 +5,20 @@ using UnityEngine;
 
 namespace PokerRandomDefense.GamePlay
 {
-    public class Deck
+    public class Deck : IDeck
     {
         private readonly List<Card> deck = new List<Card>();
         private int deckCount;
-
         public int Count => deck.Count;
+
+        public Deck()
+            => RefreshDeck();
 
         public void RefreshDeck()
         {
             deck.Clear();
 
-            foreach (Card.Suit suit in (Card.Suit[]) Enum.GetValues(typeof(Card.Suit)))
+            foreach (Card.CardSuit suit in (Card.CardSuit[]) Enum.GetValues(typeof(Card.CardSuit)))
             {
                 for (int i = 0; i < 13; i++)
                 {
