@@ -9,7 +9,5 @@ namespace PokerRandomDefense.GamePlay.Stats
         public int Health { get; set; }
         public int Wave { get; set; }
         public int Gold { get; set; }
-
-        public string test = "asdasd,.d";
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PokerRandomDefense.GamePlay
 {
 
-    public class Hand : MonoBehaviour
+    public class Hand
     {
     }
 }
