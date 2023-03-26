@@ -12,7 +12,6 @@ namespace PokerRandomDefense.GamePlay
         private readonly GameStats _gameStats;
         private readonly IDeck _deck;
         private Card[] cardArray;
-        private int deckCount = 0;
         [SerializeField]
         private int availableCardCount = 5;
         [SerializeField]

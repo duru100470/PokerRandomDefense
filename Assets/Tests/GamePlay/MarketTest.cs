@@ -45,7 +45,7 @@ public class MarketTest
         {
             Assert.NotNull(c);
         }
-        Assert.Throws<IndexOutOfRangeException>(() => market.Buy(6));
+        Assert.Throws<IndexOutOfRangeException>(() => market.Buy(market.CardArray.Count()));
 
         var test1 = market.CardArray[0];
         var card = market.Buy(0);
@@ -72,17 +72,17 @@ public class MarketTest
 
         gameStats.Gold = 100;
         market.Buy(0);
-        Assert.That(deck.Count == 52 - 5);
+        Assert.That(deck.Count == 52 - market.CardArray.Count());
 
         Assert.Null(market.CardArray[0]);
         market.Reroll();
         Assert.NotNull(market.CardArray[0]);
 
         var test = market.CardArray[1];
-        Assert.That(deck.Count == 52 - 10);
+        Assert.That(deck.Count == 52 - market.CardArray.Count() * 2);
         market.Reroll();
         Assert.That(test != market.CardArray[1]);
-        Assert.That(deck.Count == 52 - 15);
+        Assert.That(deck.Count == 52 - market.CardArray.Count() * 3);
 
         gameStats.Gold = 0;
         Assert.Throws<Market.NotEnoughGoldException>(() => market.Reroll());
