@@ -5,15 +5,17 @@ using UnityEngine;
 
 namespace PokerRandomDefense.GamePlay
 {
-    public class Tower
+    public class Tower : MonoBehaviour
     {
         private readonly List<Card> cards = new List<Card>();
+        private (int, int) rank = (0, 0);
         public List<Card> Cards => cards;
 
         public void Insert(Card card)
         {
             if (cards.Count >= 5) return;
             cards.Add(card);
+            rank = GetRank();
         }
 
         public bool TryInsert(Card card)
@@ -23,6 +25,7 @@ namespace PokerRandomDefense.GamePlay
                 return false;
 
             cards.Add(card);
+            rank = GetRank();
             return true;
         }
 
@@ -36,15 +39,18 @@ namespace PokerRandomDefense.GamePlay
 
             // Straight Flush
             if (isFlush && isStraight) return (8, highNumber);
+            
             // Four of a Kind
             if (pairList.ContainsValue(4))
             {
                 var high = pairList.First(kv => kv.Value == 4).Key;
                 return (7, high == 0 ? 13 : high);
             }
+
             // Full House
             if (pairList.ContainsValue(3) && pairList.ContainsValue(2))
                 return (6, pairList.First(kv => kv.Value == 3).Key);
+
             // Flush
             if (isFlush)
             {
@@ -53,27 +59,32 @@ namespace PokerRandomDefense.GamePlay
                 else
                     return (5, highNumber);
             }
+
             // Straight
             if (isStraight)
                 return (4, highNumber);
+
             // Three of a Kind
             if (pairList.ContainsValue(3))
             {
                 var high = pairList.First(kv => kv.Value == 3).Key;
                 return (3, high == 0 ? 13 : high);
             }
+
             // Two Pairs
             if (pairList.Count == 2)
             {
                 if (pairList.First().Value == 0) return (2, 13);
                 else return (2, pairList.Last(kv => kv.Value == 2).Key);
             }
+
             // One Pair
             if (pairList.Count == 1)
             {
                 var high = pairList.First(kv => kv.Value == 2).Key;
                 return (1, high == 0 ? 13 : high);
             }
+
             // High Card
             if (cards.FirstOrDefault(c => c.Index == 0) != default)
                 return (0, 13);

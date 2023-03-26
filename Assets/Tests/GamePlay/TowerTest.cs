@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using PokerRandomDefense.GamePlay;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public class TowerTest
 {
@@ -37,10 +38,14 @@ public class TowerTest
         Assert.IsFalse(tower.TryInsert(card1));
     }
 
-    [Test]
-    public void CardRankingTest()
+    [UnityTest]
+    public IEnumerator CardRankingTest()
     {
-        Tower tower = new Tower();
+        var go = new GameObject("tower");
+        var tower = go.AddComponent<Tower>();
+
+        yield return null;
+
         // High Card
         Card card1 = new Card(Card.CardSuit.Clubs, 0);
         Card card2 = new Card(Card.CardSuit.Hearts, 2);
@@ -57,7 +62,7 @@ public class TowerTest
         Assert.AreEqual((0, 13), tower.GetRank());
 
         // High Card 2
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 10);
 
         tower.Insert(card1);
@@ -65,7 +70,7 @@ public class TowerTest
         Assert.AreEqual((0, 10), tower.GetRank());
 
         // One Pair
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 0);
         card2 = new Card(Card.CardSuit.Hearts, 6);
         card3 = new Card(Card.CardSuit.Clubs, 4);
@@ -81,7 +86,7 @@ public class TowerTest
         Assert.AreEqual((1, 6), tower.GetRank());
 
         // One Pair 2
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 5);
         card2 = new Card(Card.CardSuit.Hearts, 5);
 
@@ -91,7 +96,7 @@ public class TowerTest
         Assert.AreEqual((1, 5), tower.GetRank());
 
         // Two Pair
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 6);
         card2 = new Card(Card.CardSuit.Hearts, 3);
         card3 = new Card(Card.CardSuit.Clubs, 4);
@@ -107,7 +112,7 @@ public class TowerTest
         Assert.AreEqual((2, 6), tower.GetRank());
 
         // Three of a kind
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 9);
         card2 = new Card(Card.CardSuit.Hearts, 3);
         card3 = new Card(Card.CardSuit.Clubs, 3);
@@ -123,7 +128,7 @@ public class TowerTest
         Assert.AreEqual((3, 3), tower.GetRank());
 
         // Straight
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 3);
         card2 = new Card(Card.CardSuit.Hearts, 4);
         card3 = new Card(Card.CardSuit.Clubs, 5);
@@ -139,7 +144,7 @@ public class TowerTest
         Assert.AreEqual((4, 7), tower.GetRank());
 
         // Straight A K Q J 10
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 0);
         card2 = new Card(Card.CardSuit.Hearts, 9);
         card3 = new Card(Card.CardSuit.Clubs, 10);
@@ -155,7 +160,7 @@ public class TowerTest
         Assert.AreEqual((4, 13), tower.GetRank());
 
         // Flush
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 10);
         card2 = new Card(Card.CardSuit.Clubs, 4);
         card3 = new Card(Card.CardSuit.Clubs, 9);
@@ -171,7 +176,7 @@ public class TowerTest
         Assert.AreEqual((5, 10), tower.GetRank());
 
         // Full House
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 10);
         card2 = new Card(Card.CardSuit.Hearts, 10);
         card3 = new Card(Card.CardSuit.Diamonds, 10);
@@ -187,7 +192,7 @@ public class TowerTest
         Assert.AreEqual((6, 10), tower.GetRank());
 
         // Four of a Kind
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Clubs, 6);
         card2 = new Card(Card.CardSuit.Hearts, 6);
         card3 = new Card(Card.CardSuit.Diamonds, 6);
@@ -203,7 +208,7 @@ public class TowerTest
         Assert.AreEqual((7, 6), tower.GetRank());
 
         // Straight Flush
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Hearts, 7);
         card2 = new Card(Card.CardSuit.Hearts, 3);
         card3 = new Card(Card.CardSuit.Hearts, 4);
@@ -219,7 +224,7 @@ public class TowerTest
         Assert.AreEqual((8, 7), tower.GetRank());
 
         // Royal Straight Flush
-        tower = new Tower();
+        tower.Cards.Clear();
         card1 = new Card(Card.CardSuit.Hearts, 9);
         card2 = new Card(Card.CardSuit.Hearts, 12);
         card3 = new Card(Card.CardSuit.Hearts, 11);

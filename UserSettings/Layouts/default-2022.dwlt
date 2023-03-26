@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
+    x: 2560
+    y: 42.666668
     width: 2560
-    height: 1357
+    height: 1357.3334
   m_ShowMode: 4
   m_Title: Console
   m_RootView: {fileID: 6}
@@ -44,11 +44,11 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 2560
-    height: 1307
+    height: 1307.3334
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 96
+  controlID: 38
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,23 +59,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1955
+    x: 1952.6666
     y: 0
-    width: 605
-    height: 1307
-  m_MinSize: {x: 275, y: 50}
+    width: 607.3334
+    height: 1307.3334
+  m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -93,10 +93,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 481
-    height: 903
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 479.33334
+    height: 904.6667
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -118,11 +118,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 903
-    width: 1955
-    height: 404
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+    y: 904.6667
+    width: 1952.6666
+    height: 402.6667
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 13}
@@ -150,7 +150,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 2560
-    height: 1357
+    height: 1357.3334
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1337
+    y: 1337.3334
     width: 2560
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -219,12 +219,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1955
-    height: 1307
+    width: 1952.6666
+    height: 1307.3334
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 38
+  controlID: 39
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,12 +244,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1955
-    height: 903
+    width: 1952.6666
+    height: 904.6667
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 39
+  controlID: 40
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -265,12 +265,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 481
+    x: 479.33334
     y: 0
-    width: 1474
-    height: 903
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 1473.3333
+    height: 904.6667
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -297,10 +297,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 4906.4004
-    y: 73.6
-    width: 725
-    height: 1573.8
+    x: 4512.667
+    y: 72.66667
+    width: 606.3334
+    height: 1286.3334
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -312,12 +312,12 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_Spl:
-    ID: 1195
+    ID: 2724
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
-    - 1128
-    - 376
+    - 912
+    - 304
     relativeSizes:
     - 0.75
     - 0.25
@@ -327,7 +327,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 1504
+    lastTotalSize: 1216
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -344,7 +344,7 @@ MonoBehaviour:
       name: PokerRandomDefense
       fullName: PokerRandomDefense
       resultStatus: 1
-      duration: 0.0328507
+      duration: 0.3291917
       messages: 
       output: 
       stacktrace: 
@@ -360,7 +360,7 @@ MonoBehaviour:
       name: Tests.dll
       fullName: F:/GameProjects/PokerRandomDefense/Library/ScriptAssemblies/Tests.dll
       resultStatus: 1
-      duration: 0.0224092
+      duration: 0.319226
       messages: 
       output: 
       stacktrace: 
@@ -372,11 +372,11 @@ MonoBehaviour:
       parentId: 1000
       parentUniqueId: '[PokerRandomDefense][suite]'
     - id: 1001
-      uniqueId: Tests.dll/[Tests][NewTestScript][suite]
-      name: NewTestScript
-      fullName: NewTestScript
+      uniqueId: Tests.dll/[Tests][DeckTest][suite]
+      name: DeckTest
+      fullName: DeckTest
       resultStatus: 1
-      duration: 0.0187748
+      duration: 0.1098972
       messages: 
       output: 
       stacktrace: 
@@ -385,19 +385,17 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1004
+      parentId: 1005
       parentUniqueId: '[Tests][F:/GameProjects/PokerRandomDefense/Library/ScriptAssemblies/Tests.dll][suite]'
-    - id: 1002
-      uniqueId: Tests.dll/NewTestScript/[Tests][NewTestScript.NewTestScriptSimplePasses]
-      name: NewTestScriptSimplePasses
-      fullName: NewTestScript.NewTestScriptSimplePasses
+    - id: 1004
+      uniqueId: Tests.dll/DeckTest/[Tests][DeckTest.AutoRefreshDeckTest]
+      name: AutoRefreshDeckTest
+      fullName: DeckTest.AutoRefreshDeckTest
       resultStatus: 1
-      duration: 0.0065997
+      duration: 0.056294
       messages: 
       output: 
-      stacktrace: 'at NewTestScript.NewTestScriptSimplePasses () [0x00001] in F:\GameProjects\PokerRandomDefense\Assets\Tests\NewTestScript.cs:13
-
-'
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -405,22 +403,181 @@ MonoBehaviour:
       categories:
       - Uncategorized
       parentId: 1001
-      parentUniqueId: Tests.dll/[Tests][NewTestScript][suite]
-    m_ResultText: 'NewTestScriptSimplePasses (0.007s)
-
-      ---
-
-      at NewTestScript.NewTestScriptSimplePasses
-      () [0x00001] in F:\GameProjects\PokerRandomDefense\Assets\Tests\NewTestScript.cs:13'
-    m_ResultStacktrace: 'at NewTestScript.NewTestScriptSimplePasses () [0x00001]
-      in F:\GameProjects\PokerRandomDefense\Assets\Tests\NewTestScript.cs:13
-
-'
+      parentUniqueId: Tests.dll/[Tests][DeckTest][suite]
+    - id: 1002
+      uniqueId: Tests.dll/DeckTest/[Tests][DeckTest.CreateDeckTest]
+      name: CreateDeckTest
+      fullName: DeckTest.CreateDeckTest
+      resultStatus: 1
+      duration: 0.0006526
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/[Tests][DeckTest][suite]
+    - id: 1003
+      uniqueId: Tests.dll/DeckTest/[Tests][DeckTest.DrawOrInsertDeckTest]
+      name: DrawOrInsertDeckTest
+      fullName: DeckTest.DrawOrInsertDeckTest
+      resultStatus: 1
+      duration: 0.0003165
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/[Tests][DeckTest][suite]
+    - id: 1005
+      uniqueId: Tests.dll/[Tests][MarketTest][suite]
+      name: MarketTest
+      fullName: MarketTest
+      resultStatus: 1
+      duration: 0.0270057
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1009
+      parentUniqueId: '[Tests][F:/GameProjects/PokerRandomDefense/Library/ScriptAssemblies/Tests.dll][suite]'
+    - id: 1006
+      uniqueId: Tests.dll/MarketTest/[Tests][MarketTest.BuyCardInMarketTest]
+      name: BuyCardInMarketTest
+      fullName: MarketTest.BuyCardInMarketTest
+      resultStatus: 1
+      duration: 0.0235703
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: Tests.dll/[Tests][MarketTest][suite]
+    - id: 1007
+      uniqueId: Tests.dll/MarketTest/[Tests][MarketTest.RerollMarketTest]
+      name: RerollMarketTest
+      fullName: MarketTest.RerollMarketTest
+      resultStatus: 1
+      duration: 0.0004764
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1005
+      parentUniqueId: Tests.dll/[Tests][MarketTest][suite]
+    - id: 1010
+      uniqueId: Tests.dll/[Tests][PlayerTest][suite]
+      name: PlayerTest
+      fullName: PlayerTest
+      resultStatus: 1
+      duration: 0.1701181
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: '[Tests][F:/GameProjects/PokerRandomDefense/Library/ScriptAssemblies/Tests.dll][suite]'
+    - id: 1011
+      uniqueId: Tests.dll/PlayerTest/[Tests][PlayerTest.SellCardTest]
+      name: SellCardTest
+      fullName: PlayerTest.SellCardTest
+      resultStatus: 1
+      duration: 0.1672473
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/[Tests][PlayerTest][suite]
+    - id: 1010
+      uniqueId: Tests.dll/[Tests][TowerTest][suite]
+      name: TowerTest
+      fullName: TowerTest
+      resultStatus: 1
+      duration: 0.0090685
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1012
+      parentUniqueId: '[Tests][F:/GameProjects/PokerRandomDefense/Library/ScriptAssemblies/Tests.dll][suite]'
+    - id: 1012
+      uniqueId: Tests.dll/TowerTest/[Tests][TowerTest.CardRankingTest]
+      name: CardRankingTest
+      fullName: TowerTest.CardRankingTest
+      resultStatus: 1
+      duration: 0.0061039
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/[Tests][TowerTest][suite]
+    - id: 1011
+      uniqueId: Tests.dll/TowerTest/[Tests][TowerTest.InsertCardTest]
+      name: InsertCardTest
+      fullName: TowerTest.InsertCardTest
+      resultStatus: 1
+      duration: 0.0006897
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1010
+      parentUniqueId: Tests.dll/[Tests][TowerTest][suite]
+    m_ResultText: CardRankingTest (0.006s)
+    m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 46bf29bc
-      m_LastClickedID: -1138114746
-      m_ExpandedIDs: db742e8b22524b3a12174372ffffff7f
+      m_SelectedIDs: 98e0fc5a
+      m_LastClickedID: 1526522008
+      m_ExpandedIDs: db742e8b461007b89266e2e326fb520602f3aa1322524b3a1217437227f22575ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -519,9 +676,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 2560
-    y: 1176.8
-    width: 2345
-    height: 470.6001
+    y: 977.3334
+    width: 1951.6666
+    height: 381.6667
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -545,39 +702,39 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/ApplicationLifecycle
+    - Assets/Tests/GamePlay
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/ApplicationLifecycle
+  - Assets/Tests/GamePlay
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\GameProjects\PokerRandomDefense
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d4700000
-    m_LastClickedID: 28884
-    m_ExpandedIDs: 000000004c6f0000d070000064710000bc72000000ca9a3b
+    m_SelectedIDs: c4750000
+    m_LastClickedID: 30148
+    m_ExpandedIDs: 000000006e6f0000fc7000000071000006710000767200008672000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Interfaces
+      m_OriginalName: Interfaces
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 28936
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -589,7 +746,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004c6f0000
+    m_ExpandedIDs: 000000006e6f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -665,10 +822,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1955
-    y: 73
-    width: 604
-    height: 1286
+    x: 4514.667
+    y: 72.66667
+    width: 604.3334
+    height: 1286.3334
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -712,10 +869,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73
-    width: 480
-    height: 882
+    x: 2560
+    y: 72.66667
+    width: 478.33334
+    height: 883.6667
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -731,7 +888,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0673ffff4ed8ffffead8ffff06dcffff7afafffff4ffffff
+      m_ExpandedIDs: 823ffeff1e40feff7443feffbc45feff5846feffae49feff0a4cfeffa64cfeffcc4ffeff0c52feffa852feffb855feff1458feffb058feffbe5bfeff725cfeff0e5dfeff1e60feff7662feff1263feff2266feff6668feff0269feff126cfeff5e6efefffa6efeff0872feffd072feff6c73feff7a76feff2677feffc277feffd07afeff787bfeff147cfeff247ffeff6c81feff0882feff1885feff6887feff0488feff148bfeff5c8dfefff88dfeff0891feff5893fefff493feff0497feff5099feffec99fefffc9cfeff489ffeffe49ffefff4a2feff44a5feffe0a5fefff8a8feff3cabfeffd8abfeff2caffeffd6affeff72b0feff98b3feffecb5feff88b6feffb0b9feff0ebcfeffaabcfeffbabffeff02c2feff9ec2feffacc5feff4cc6feffe8c6fefff8c9feff2cd3feffc8d3feffe6d6feff32d9feffced9feffecdcfeff2cdffeffc8dffeffe4e2feffa0e7feff3ce8feff56ebfeffb4edfeff48eefeff06f3feffa2f3feffd6f5feffe4f5feffbcf6feff56f7fefff2f7feff02fbfeff3afdfeffd6fdfeffe600ffff3c03ffffd803ffff1807ffff5809fffff409ffff020dffffaa0dffff460effff5411ffff0c12ffffa812ffffb815ffff0018ffff9c18ffffac1bffffe41dffff801effffbe21ffff6e22ffff0a23ffff4a26ffff8a28ffff2629ffff362cffff9e2effff3a2fffff7a32ffffae34ffff4a35ffff8838ffff3439ffffd039ffffde3cffff923dffff2e3effff3c41fffff041ffff8c42ffff9a45ffff4246ffffde46ffff1e4affff264cffff744fffff1050ffff5253ffff9e55ffff3a56ffff7a59ffffda5dffff765effffb861ffff1864ffffb464fffff667ffff5e6afffffa6affff346effff6c70ffff0871ffff4074ffffe874ffff8475ffffbe78ffff067bffffa27bffffdc7effffd081ffff6c82ffffa685fffffa87ffff9688ffffb08bffff248effffc08effffe091ffffea94ffff8695ffffa898ffff949effff309fffff62a2ffff36a7ffffd2a7fffffcaaffff4cadffffe8adffff1ab1ffff66b3ffff02b4ffff2ab7ffffd6b7ffff72b8ffffa4bbffffe8bdffff84beffffaec1ffff0ac4ffffa6c4ffffc8c7ffff24caffffc0caffffe4cdffffa2d0ffff3ed1ffff5ad4ffffd6d8ffff72d9ffff90dcffffdafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -775,10 +932,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 481
-    y: 73
-    width: 1472
-    height: 882
+    x: 3039.3333
+    y: 72.66667
+    width: 1471.3333
+    height: 883.6667
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -793,7 +950,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -171, y: -26.400024}
+      snapOffset: {x: -171, y: -26.666687}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
@@ -1223,10 +1380,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 3137.6
-    y: 73.6
-    width: 1766.4
-    height: 1082.2
+    x: 3039.3333
+    y: 72.66667
+    width: 1471.3333
+    height: 883.6667
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1243,7 +1400,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1766.4, y: 1061.2}
+  m_TargetSize: {x: 1471.3333, y: 862.6667}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1258,10 +1415,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -883.2
-    m_HBaseRangeMax: 883.2
-    m_VBaseRangeMin: -530.6
-    m_VBaseRangeMax: 530.6
+    m_HBaseRangeMin: -490.44443
+    m_HBaseRangeMax: 490.44443
+    m_VBaseRangeMin: -287.55557
+    m_VBaseRangeMax: 287.55557
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1279,23 +1436,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1766.4
-      height: 1061.2
+      width: 1471.3333
+      height: 862.6667
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 883.2, y: 530.6}
+    m_Translation: {x: 735.6666, y: 431.33334}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -883.2
-      y: -530.6
-      width: 1766.4
-      height: 1061.2
+      x: -735.6666
+      y: -431.33334
+      width: 1471.3333
+      height: 862.6667
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1766.4, y: 1082.2}
+  m_LastWindowPixelSize: {x: 2207, y: 1325.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1321,10 +1478,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 976
-    width: 1954
-    height: 383
+    x: 2560
+    y: 977.3334
+    width: 1951.6666
+    height: 381.6667
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
