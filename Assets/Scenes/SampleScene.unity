@@ -417,8 +417,8 @@ MonoBehaviour:
   parentReference:
     TypeName: PokerRandomDefense.DI.ApplicationController
   autoRun: 1
-  autoInjectGameObjects:
-  - {fileID: 1564216659}
+  autoInjectGameObjects: []
+  enemyFactory: {fileID: 1564216661}
   player: {fileID: 2011986594}
   userInputSender: {fileID: 1464277853}
 --- !u!1 &1464277851
@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d29956823e3eb48903332ff3b72c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: {fileID: 517340264882941127, guid: 4a747c6dcb3fa094b898b4c3fce69545, type: 3}
 --- !u!1 &1564216659
 GameObject:
   m_ObjectHideFlags: 0

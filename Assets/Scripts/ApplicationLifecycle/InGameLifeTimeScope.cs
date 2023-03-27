@@ -8,6 +8,8 @@ using VContainer.Unity;
 public class InGameLifeTimeScope : LifetimeScope
 {
     [SerializeField]
+    EnemyFactory enemyFactory;
+    [SerializeField]
     Player player;
     [SerializeField]
     UserInputSender userInputSender;
@@ -17,6 +19,7 @@ public class InGameLifeTimeScope : LifetimeScope
         // Initialize objects
         builder.Register<Deck>(Lifetime.Scoped).As<IDeck>();
         builder.Register<Market>(Lifetime.Scoped);
+        builder.RegisterComponent<EnemyFactory>(enemyFactory);
         builder.RegisterComponent<Player>(player);
         builder.RegisterComponent<UserInputSender>(userInputSender);
 

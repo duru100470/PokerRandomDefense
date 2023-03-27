@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace PokerRandomDefense.GamePlay
     {
         private readonly List<Card> cards = new List<Card>();
         private (int, int) rank = (0, 0);
-        public List<Card> Cards => cards;
+        public ReadOnlyCollection<Card> Cards => cards.AsReadOnly();
 
         public void Insert(Card card)
         {

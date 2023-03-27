@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 {
-    LifetimeScope lifeTimeScope;
+    LifetimeScope lifetimeScope;
     Queue<T> objQueue = new Queue<T>();
     [SerializeField]
     int amountToPool = 20;
@@ -15,7 +15,7 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        lifeTimeScope = GameObject.FindObjectOfType<InGameLifeTimeScope>();
+        lifetimeScope = LifetimeScope.Find<InGameLifeTimeScope>();
         Initialze(amountToPool);
     }
 
@@ -29,10 +29,9 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual T CreateNewObject()
     {
-        var obj = lifeTimeScope.Container.Instantiate(objToPool)
+        var obj = lifetimeScope.Container.Instantiate(objToPool, transform)
             .GetComponent<T>();
         obj.gameObject.SetActive(false);
-        obj.transform.SetParent(transform);
         return obj;
     }
 
