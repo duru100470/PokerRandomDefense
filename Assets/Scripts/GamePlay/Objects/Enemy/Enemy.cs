@@ -16,5 +16,19 @@ namespace PokerRandomDefense.GamePlay
         {
             if (transform.position.x > 15) EnemyFactory.Destroy(this);
         }
+
+        public void GetDamage(int amount)
+        {
+            Health -= amount;
+            if (Health <= 0) EnemyFactory.Destroy(this);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.CompareTag("Player")) return;
+            collision.GetComponent<Player>().GetDamage(Damage);
+
+            Destroy(gameObject);
+        }
     }
 }
