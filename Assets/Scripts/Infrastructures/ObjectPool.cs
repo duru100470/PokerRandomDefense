@@ -55,6 +55,48 @@ namespace PokerRandomDefense.Infrastructure
             }
         }
 
+        public virtual T Instantiate(Vector3 position)
+        {
+            if (objQueue.Count > 0)
+            {
+                var obj = objQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                obj.transform.position = position;
+                return obj;
+            }
+            else
+            {
+                var newObj = CreateNewObject();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                newObj.transform.position = position;
+                return newObj;
+            }
+        }
+
+        public virtual T Instantiate(Vector3 position, Quaternion rotation)
+        {
+            if (objQueue.Count > 0)
+            {
+                var obj = objQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                obj.transform.position = position;
+                obj.transform.rotation = rotation;
+                return obj;
+            }
+            else
+            {
+                var newObj = CreateNewObject();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                newObj.transform.position = position;
+                newObj.transform.rotation = rotation;
+                return newObj;
+            }
+        }
+
         public virtual void Destroy(T obj)
         {
             obj.gameObject.SetActive(false);
