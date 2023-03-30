@@ -17,7 +17,7 @@ public class DeckTest
     }
 
     [Test]
-    public void CreateDeckTest()
+    public void Deck_HasValidCards_WhenCreated()
     {
         Assert.NotNull(deck);
 
@@ -41,7 +41,7 @@ public class DeckTest
     }
 
     [Test]
-    public void DrawOrInsertDeckTest()
+    public void Draw_DrawnCard_ShouldNotBeNull()
     {
         // Clear deck
         deck.RefreshDeck();
@@ -57,15 +57,25 @@ public class DeckTest
         Assert.NotNull(card4);
 
         Assert.That(deck.Count == 52 - 4, $"Deck count is {deck.Count}");
+    }
+
+    [Test]
+    public void Insert_Card_ShouldInsertedIntoDeck()
+    {
+        // Clear deck
+        deck.RefreshDeck();
+
+        var card1 = deck.Draw();
+        var card2 = deck.Draw();
 
         deck.Insert(card1);
         deck.Insert(card2);
 
-        Assert.That(deck.Count == 52 - 2, $"Deck count is {deck.Count}");
+        Assert.That(deck.Count == 52, $"Deck count is {deck.Count}");
     }
 
     [Test]
-    public void AutoRefreshDeckTest()
+    public void RefreshDeck_ShouldBeRefreshed_WhenDeckHasNoCard()
     {
         deck.RefreshDeck();
 

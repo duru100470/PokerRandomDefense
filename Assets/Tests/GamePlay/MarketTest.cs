@@ -32,7 +32,7 @@ public class MarketTest
     Market market;
 
     [Test]
-    public void BuyCardInMarketTest()
+    public void Buy_WorkCorrectly_WhenCalled()
     {
         deck = new TestDeck();
         gameStats = new GameStats();
@@ -64,7 +64,7 @@ public class MarketTest
     }
 
     [Test]
-    public void RerollMarketTest()
+    public void Reroll_WorkCorrectly_WhenCalled()
     {
         deck = new Deck();
         gameStats = new GameStats();

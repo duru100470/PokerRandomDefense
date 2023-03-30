@@ -10,6 +10,10 @@ namespace PokerRandomDefense.GamePlay
     {
         private readonly List<Card> cards = new List<Card>();
         private (int, int) rank = (0, 0);
+        private float atkSpeed = 1f; // Todo: Inject from GameStats
+
+        public int Damage => (rank.Item1 + 1) * rank.Item2;
+        public (int, int) Rank => rank;
         public ReadOnlyCollection<Card> Cards => cards.AsReadOnly();
 
         public void Insert(Card card)
@@ -30,7 +34,7 @@ namespace PokerRandomDefense.GamePlay
             return true;
         }
 
-        public (int, int) GetRank()
+        private (int, int) GetRank()
         {
             if (cards.Count == 0) return (0, 0);
 
@@ -40,7 +44,7 @@ namespace PokerRandomDefense.GamePlay
 
             // Straight Flush
             if (isFlush && isStraight) return (8, highNumber);
-            
+
             // Four of a Kind
             if (pairList.ContainsValue(4))
             {
