@@ -41,7 +41,7 @@ public class PlayerTest
     }
 
     [UnityTest]
-    public IEnumerator SellCardTest()
+    public IEnumerator SellCard_WorkCorrectly_WhenCalled()
     {
         yield return null;
 
@@ -66,7 +66,7 @@ public class PlayerTest
     }
 
     [UnityTest]
-    public IEnumerator InsertCardTest()
+    public IEnumerator InsertCard_WorkCorrectly_WhenCalled()
     {
         yield return null;
 

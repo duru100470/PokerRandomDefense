@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PokerRandomDefense.GamePlay;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 public class UserInputSender : MonoBehaviour
 {

@@ -1,0 +1,64 @@
+---
+title: Class Diagram
+---
+classDiagram
+    class Deck{
+        int Count
+        RefreshDeck(): void
+        Insert(Card card): void
+        Draw(): Card
+    }
+    class Card{
+        CardSuit Suit
+        int Index
+        int Stat
+        int Price
+    }
+    class Market{
+        Card[] CardArray
+        Buy(int index): Card
+        Reroll(): void
+    }
+    class Player{
+        Card[] CardArray
+        Tower[] TowerArray
+        BuyCard(int index): void
+        SellCard(int index): void
+        InsertCard(int towerIndex, Card card): void
+        DestroyTower(int index): void
+        GetDamage(int amount): void
+    }
+    class Tower{
+        List~Card~ Cards
+        (int, int) Rank
+        int Damage
+        Insert(Card card): void
+        TryInsert(Card card): bool
+    }
+    class GameStats{
+        int Health
+        int Gold
+        int Wave
+    }
+    class CardStats{
+    }
+    class EnemyStats{
+    }
+    class TowerStats{
+    }
+    class IDeck{
+        int Count
+        Draw(): Card
+        Insert(Card card): void
+    }
+    IDeck <.. Market
+    IDeck <|-- Deck
+    Card <.. Deck
+    GameStats <.. Deck
+    GameStats <.. Market
+    GameStats <.. Player
+    CardStats <.. GameStats
+    TowerStats <.. GameStats
+    EnemyStats <.. GameStats
+    Market <.. Player
+    Tower <.. Player

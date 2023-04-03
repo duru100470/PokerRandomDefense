@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using PokerRandomDefense.Infrastructure;
 using UnityEngine;
 
 namespace PokerRandomDefense.GamePlay
 {
-    public class Enemy : MonoBehaviour
+    public class ProjectileFactory : ObjectPool<Projectile>
     {
-        public int Health { get; set; }
-        public int Damage { get; set; }
     }
 }

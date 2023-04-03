@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 public class TowerTest
 {
     [Test]
-    public void InsertCardTest()
+    public void Insert_MultipleCard_AreInsertedSuccessfully()
     {
         Tower tower = new Tower();
         Card card1 = new Card(Card.CardSuit.Clubs, 0);
@@ -39,204 +39,171 @@ public class TowerTest
     }
 
     [UnityTest]
-    public IEnumerator CardRankingTest()
+    public IEnumerator Rank_Cards_ReturnValidRank([ValueSource(nameof(rankTestCases))] object[] testCase)
     {
         var go = new GameObject("tower");
         var tower = go.AddComponent<Tower>();
 
         yield return null;
 
-        // High Card
-        Card card1 = new Card(Card.CardSuit.Clubs, 0);
-        Card card2 = new Card(Card.CardSuit.Hearts, 2);
-        Card card3 = new Card(Card.CardSuit.Clubs, 4);
-        Card card4 = new Card(Card.CardSuit.Diamonds, 9);
-        Card card5 = new Card(Card.CardSuit.Spades, 12);
+        List<Card> cards = (List<Card>)testCase[0];
+        foreach (var card in cards)
+            tower.Insert(card);
 
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((0, 13), tower.GetRank());
-
-        // High Card 2
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 10);
-
-        tower.Insert(card1);
-
-        Assert.AreEqual((0, 10), tower.GetRank());
-
-        // One Pair
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 0);
-        card2 = new Card(Card.CardSuit.Hearts, 6);
-        card3 = new Card(Card.CardSuit.Clubs, 4);
-        card4 = new Card(Card.CardSuit.Diamonds, 6);
-        card5 = new Card(Card.CardSuit.Spades, 3);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((1, 6), tower.GetRank());
-
-        // One Pair 2
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 5);
-        card2 = new Card(Card.CardSuit.Hearts, 5);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-
-        Assert.AreEqual((1, 5), tower.GetRank());
-
-        // Two Pair
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 6);
-        card2 = new Card(Card.CardSuit.Hearts, 3);
-        card3 = new Card(Card.CardSuit.Clubs, 4);
-        card4 = new Card(Card.CardSuit.Diamonds, 6);
-        card5 = new Card(Card.CardSuit.Spades, 3);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((2, 6), tower.GetRank());
-
-        // Three of a kind
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 9);
-        card2 = new Card(Card.CardSuit.Hearts, 3);
-        card3 = new Card(Card.CardSuit.Clubs, 3);
-        card4 = new Card(Card.CardSuit.Diamonds, 6);
-        card5 = new Card(Card.CardSuit.Spades, 3);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((3, 3), tower.GetRank());
-
-        // Straight
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 3);
-        card2 = new Card(Card.CardSuit.Hearts, 4);
-        card3 = new Card(Card.CardSuit.Clubs, 5);
-        card4 = new Card(Card.CardSuit.Diamonds, 6);
-        card5 = new Card(Card.CardSuit.Spades, 7);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((4, 7), tower.GetRank());
-
-        // Straight A K Q J 10
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 0);
-        card2 = new Card(Card.CardSuit.Hearts, 9);
-        card3 = new Card(Card.CardSuit.Clubs, 10);
-        card4 = new Card(Card.CardSuit.Diamonds, 11);
-        card5 = new Card(Card.CardSuit.Spades, 12);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((4, 13), tower.GetRank());
-
-        // Flush
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 10);
-        card2 = new Card(Card.CardSuit.Clubs, 4);
-        card3 = new Card(Card.CardSuit.Clubs, 9);
-        card4 = new Card(Card.CardSuit.Clubs, 6);
-        card5 = new Card(Card.CardSuit.Clubs, 7);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((5, 10), tower.GetRank());
-
-        // Full House
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 10);
-        card2 = new Card(Card.CardSuit.Hearts, 10);
-        card3 = new Card(Card.CardSuit.Diamonds, 10);
-        card4 = new Card(Card.CardSuit.Diamonds, 3);
-        card5 = new Card(Card.CardSuit.Spades, 3);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((6, 10), tower.GetRank());
-
-        // Four of a Kind
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Clubs, 6);
-        card2 = new Card(Card.CardSuit.Hearts, 6);
-        card3 = new Card(Card.CardSuit.Diamonds, 6);
-        card4 = new Card(Card.CardSuit.Diamonds, 3);
-        card5 = new Card(Card.CardSuit.Spades, 6);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((7, 6), tower.GetRank());
-
-        // Straight Flush
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Hearts, 7);
-        card2 = new Card(Card.CardSuit.Hearts, 3);
-        card3 = new Card(Card.CardSuit.Hearts, 4);
-        card4 = new Card(Card.CardSuit.Hearts, 5);
-        card5 = new Card(Card.CardSuit.Hearts, 6);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((8, 7), tower.GetRank());
-
-        // Royal Straight Flush
-        tower.Cards.Clear();
-        card1 = new Card(Card.CardSuit.Hearts, 9);
-        card2 = new Card(Card.CardSuit.Hearts, 12);
-        card3 = new Card(Card.CardSuit.Hearts, 11);
-        card4 = new Card(Card.CardSuit.Hearts, 10);
-        card5 = new Card(Card.CardSuit.Hearts, 0);
-
-        tower.Insert(card1);
-        tower.Insert(card2);
-        tower.Insert(card3);
-        tower.Insert(card4);
-        tower.Insert(card5);
-
-        Assert.AreEqual((8, 13), tower.GetRank());
+        Assert.AreEqual(((int, int))testCase[1], tower.Rank);
     }
+
+    static object[] rankTestCases = new object[]
+    {
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 0),
+                new Card(Card.CardSuit.Hearts, 2),
+                new Card(Card.CardSuit.Clubs, 4),
+                new Card(Card.CardSuit.Diamonds, 9),
+                new Card(Card.CardSuit.Spades, 12)
+            },
+            (0, 13)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 10)
+            },
+            (0, 10)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 0),
+                new Card(Card.CardSuit.Hearts, 6),
+                new Card(Card.CardSuit.Clubs, 4),
+                new Card(Card.CardSuit.Diamonds, 6),
+                new Card(Card.CardSuit.Spades, 3)
+            },
+            (1, 6)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 5),
+                new Card(Card.CardSuit.Hearts, 5)
+            },
+            (1, 5)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 6),
+                new Card(Card.CardSuit.Hearts, 3),
+                new Card(Card.CardSuit.Clubs, 4),
+                new Card(Card.CardSuit.Diamonds, 6),
+                new Card(Card.CardSuit.Spades, 3)
+            },
+            (2, 6)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 9),
+                new Card(Card.CardSuit.Hearts, 3),
+                new Card(Card.CardSuit.Clubs, 3),
+                new Card(Card.CardSuit.Diamonds, 6),
+                new Card(Card.CardSuit.Spades, 3)
+
+            },
+            (3, 3)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 3),
+                new Card(Card.CardSuit.Hearts, 4),
+                new Card(Card.CardSuit.Clubs, 5),
+                new Card(Card.CardSuit.Diamonds, 6),
+                new Card(Card.CardSuit.Spades, 7)
+            },
+            (4, 7)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 0),
+                new Card(Card.CardSuit.Hearts, 9),
+                new Card(Card.CardSuit.Clubs, 10),
+                new Card(Card.CardSuit.Diamonds, 11),
+                new Card(Card.CardSuit.Spades, 12)
+            },
+            (4, 13)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 10),
+                new Card(Card.CardSuit.Clubs, 4),
+                new Card(Card.CardSuit.Clubs, 9),
+                new Card(Card.CardSuit.Clubs, 6),
+                new Card(Card.CardSuit.Clubs, 7)
+            },
+            (5, 10)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 10),
+                new Card(Card.CardSuit.Hearts, 10),
+                new Card(Card.CardSuit.Diamonds, 10),
+                new Card(Card.CardSuit.Diamonds, 3),
+                new Card(Card.CardSuit.Spades, 3)
+            },
+            (6, 10)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Clubs, 6),
+                new Card(Card.CardSuit.Hearts, 6),
+                new Card(Card.CardSuit.Diamonds, 6),
+                new Card(Card.CardSuit.Diamonds, 3),
+                new Card(Card.CardSuit.Spades, 6)
+            },
+            (7, 6)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Hearts, 7),
+                new Card(Card.CardSuit.Hearts, 3),
+                new Card(Card.CardSuit.Hearts, 4),
+                new Card(Card.CardSuit.Hearts, 5),
+                new Card(Card.CardSuit.Hearts, 6)
+            },
+            (8, 7)
+        },
+        new object[]
+        {
+            new List<Card>
+            {
+                new Card(Card.CardSuit.Hearts, 9),
+                new Card(Card.CardSuit.Hearts, 12),
+                new Card(Card.CardSuit.Hearts, 11),
+                new Card(Card.CardSuit.Hearts, 10),
+                new Card(Card.CardSuit.Hearts, 0)
+            },
+            (8, 13)
+        },
+    };
 }
