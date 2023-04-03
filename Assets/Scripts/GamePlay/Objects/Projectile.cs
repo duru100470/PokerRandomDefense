@@ -14,7 +14,7 @@ namespace PokerRandomDefense.GamePlay
         private Transform target;
         private float damage;
 
-        public void Setup(Transform target, float damage)
+        public void Init(Transform target, float damage)
         {
             movement2D = GetComponent<Movement2D>();
             this.target = target;
@@ -39,7 +39,7 @@ namespace PokerRandomDefense.GamePlay
             if (!collision.CompareTag("Enemy")) return;
             collision.GetComponent<Enemy>();
 
-            Destroy(gameObject);
+            projectileFactory.Destroy(this);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using PokerRandomDefense.GamePlay.Stats;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace PokerRandomDefense.GamePlay
 {
@@ -20,6 +21,8 @@ namespace PokerRandomDefense.GamePlay
         private int handCount = 7; // Change to inject in GameStats
         [SerializeField]
         private int towerCount = 5; // Change to inject in GameStats
+        [SerializeField]
+        private GameObject towerPrefab;
 
         public Card[] CardArray => cardArray;
         public Tower[] TowerArray => towerArray;
@@ -28,6 +31,8 @@ namespace PokerRandomDefense.GamePlay
         {
             cardArray = new Card[handCount];
             towerArray = new Tower[towerCount];
+
+            Test();
         }
 
         public void BuyCard(int index)
@@ -59,9 +64,9 @@ namespace PokerRandomDefense.GamePlay
         {
             if (towerArray[towerIndex] == null)
             {
-                var go = new GameObject("Tower");
-                var tower = go.AddComponent<Tower>();
-                towerArray[towerIndex] = tower;
+                var lifetimeScope = LifetimeScope.Find<InGameLifeTimeScope>();
+                towerArray[towerIndex] = lifetimeScope.Container
+                    .Instantiate(towerPrefab).GetComponent<Tower>();
             }
 
             towerArray[towerIndex].TryInsert(card);
@@ -71,12 +76,17 @@ namespace PokerRandomDefense.GamePlay
         {
             if (towerArray[index] == null) return;
 
-            Destroy(towerArray[index]);
+            Destroy(towerArray[index].gameObject);
         }
 
         public void GetDamage(int amount)
         {
             _gameStats.Health -= amount;
+        }
+
+        public void Test()
+        {
+            InsertCard(0, new Card(Card.CardSuit.Clubs, 0));
         }
     }
 }

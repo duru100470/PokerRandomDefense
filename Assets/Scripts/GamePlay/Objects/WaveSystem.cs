@@ -20,8 +20,8 @@ namespace PokerRandomDefense.GamePlay
             while (true)
             {
                 yield return new WaitForSeconds(3f);
-                Debug.Log($"asdasdasd");
-                enemyFactory.Instantiate(new Vector2(-8.5f, Random.Range(-4, 4)));
+                var enemy = enemyFactory.Instantiate(new Vector2(-8.5f, Random.Range(-4, 4)));
+                enemyFactory.EnemyList.Add(enemy);
             }
         }
     }

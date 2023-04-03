@@ -14,6 +14,7 @@ namespace PokerRandomDefense.GamePlay
 
         public int Damage => (rank.Item1 + 1) * rank.Item2;
         public (int, int) Rank => rank;
+        public float AtkSpeed => atkSpeed;
         public ReadOnlyCollection<Card> Cards => cards.AsReadOnly();
 
         public void Insert(Card card)

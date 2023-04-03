@@ -10,7 +10,7 @@ namespace PokerRandomDefense.GamePlay
         {
             base.Update();
 
-            transform.position = transform.position + new Vector3(0.01f, 0f, 0f);
+            transform.position = transform.position + new Vector3(0.005f, 0f, 0f);
         }
     }
 }
