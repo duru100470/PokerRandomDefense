@@ -10,6 +10,7 @@ namespace PokerRandomDefense.Infrastructure
         public delegate void DataEventHandler(T oldData, T newData);
         public event DataEventHandler OnValueChanged;
 
+        public ReactData() { }
         public ReactData(T data) => this.data = data;
 
         public T Value

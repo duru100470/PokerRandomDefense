@@ -49,7 +49,7 @@ public class PlayerTest
         card1.Price = 4;
 
         player.CardArray[0] = card1;
-        gameStats.Gold = 0;
+        gameStats.Gold.Value = 0;
 
         player.SellCard(0);
         Assert.AreEqual(2, gameStats.Gold);

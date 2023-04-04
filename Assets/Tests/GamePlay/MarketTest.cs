@@ -38,7 +38,7 @@ public class MarketTest
         gameStats = new GameStats();
         market = new Market(gameStats, deck);
 
-        gameStats.Gold = 20;
+        gameStats.Gold.Value = 20;
         int gold = 20;
 
         foreach (var c in market.CardArray.Value)
@@ -53,13 +53,13 @@ public class MarketTest
 
         Assert.NotNull(card);
         Assert.That(test1 == card);
-        Assert.That(gold == gameStats.Gold);
+        Assert.That(gold == gameStats.Gold.Value);
 
         card = market.Buy(0);
         Assert.IsNull(card);
-        Assert.That(gold == gameStats.Gold);
+        Assert.That(gold == gameStats.Gold.Value);
 
-        gameStats.Gold = 0;
+        gameStats.Gold.Value = 0;
         Assert.Throws<Market.NotEnoughGoldException>(() => market.Buy(1));
     }
 
@@ -70,7 +70,7 @@ public class MarketTest
         gameStats = new GameStats();
         market = new Market(gameStats, deck);
 
-        gameStats.Gold = 100;
+        gameStats.Gold.Value = 100;
         market.Buy(0);
         Assert.That(deck.Count == 52 - market.CardArray.Value.Count());
 
@@ -84,7 +84,7 @@ public class MarketTest
         Assert.That(test != market.CardArray.Value[1]);
         Assert.That(deck.Count == 52 - market.CardArray.Value.Count() * 3);
 
-        gameStats.Gold = 0;
+        gameStats.Gold.Value = 0;
         Assert.Throws<Market.NotEnoughGoldException>(() => market.Reroll());
     }
 }
