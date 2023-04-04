@@ -58,7 +58,7 @@ namespace PokerRandomDefense.GamePlay
 
         public void SellCard(int index)
         {
-            _gameStats.Gold += cardArray[index].Price / 2;
+            _gameStats.Gold.Value += cardArray[index].Price / 2;
             cardArray[index] = null;
         }
 
@@ -82,7 +82,7 @@ namespace PokerRandomDefense.GamePlay
 
         public void GetDamage(int amount)
         {
-            _gameStats.Health -= amount;
+            _gameStats.Health.Value -= amount;
         }
 
         public void Test()

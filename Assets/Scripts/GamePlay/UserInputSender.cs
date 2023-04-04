@@ -14,6 +14,9 @@ public class UserInputSender : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            _market.Reroll();
+        }
     }
 }

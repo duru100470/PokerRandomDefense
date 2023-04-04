@@ -24,7 +24,7 @@ namespace PokerRandomDefense.GamePlay
 
         public void Sell(int index)
         {
-            _gameStats.Gold += cardArray[index].Price / 2;
+            _gameStats.Gold.Value += cardArray[index].Price / 2;
             cardArray[index] = null;
         }
     }

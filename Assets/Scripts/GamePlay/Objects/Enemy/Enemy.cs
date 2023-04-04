@@ -12,7 +12,7 @@ namespace PokerRandomDefense.GamePlay
         [SerializeField]
         private int maxHealth;
         public int Health { get; set; }
-        public int Damage { get; set; }
+        public int Damage { get; set; } = 2;
 
         protected virtual void Awake()
         {

@@ -38,9 +38,9 @@ namespace PokerRandomDefense.GamePlay
             Card card = cardArray.Value[index];
             if (card is null) return null;
 
-            if (_gameStats.Gold < card.Price) throw new NotEnoughGoldException();
+            if (_gameStats.Gold.Value < card.Price) throw new NotEnoughGoldException();
 
-            _gameStats.Gold -= card.Price;
+            _gameStats.Gold.Value -= card.Price;
             cardArray.Value[index] = null;
 
             cardArray.Notify();
@@ -49,7 +49,8 @@ namespace PokerRandomDefense.GamePlay
 
         public void Reroll()
         {
-            if (_gameStats.Gold < rerollPrice) throw new NotEnoughGoldException();
+            if (_gameStats.Gold.Value < rerollPrice) throw new NotEnoughGoldException();
+            _gameStats.Gold.Value -= 2;
 
             for (int i = 0; i < 5; i++)
             {
