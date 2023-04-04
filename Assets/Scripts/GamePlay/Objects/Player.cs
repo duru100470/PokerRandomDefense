@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PokerRandomDefense.DI;
 using PokerRandomDefense.GamePlay.Stats;
 using UnityEngine;
 using VContainer;
@@ -15,6 +16,7 @@ namespace PokerRandomDefense.GamePlay
         private readonly GameStats _gameStats;
         [Inject]
         private readonly Market _market;
+        private LifetimeScope _scope;
         private Card[] cardArray;
         private Tower[] towerArray;
         [SerializeField]
@@ -32,7 +34,7 @@ namespace PokerRandomDefense.GamePlay
             cardArray = new Card[handCount];
             towerArray = new Tower[towerCount];
 
-            Test();
+            _scope = LifetimeScope.Find<InGameScope>();
         }
 
         public void BuyCard(int index)
@@ -64,8 +66,7 @@ namespace PokerRandomDefense.GamePlay
         {
             if (towerArray[towerIndex] == null)
             {
-                var lifetimeScope = LifetimeScope.Find<InGameLifeTimeScope>();
-                towerArray[towerIndex] = lifetimeScope.Container
+                towerArray[towerIndex] = _scope.Container
                     .Instantiate(towerPrefab).GetComponent<Tower>();
             }
 

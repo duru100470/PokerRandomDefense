@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PokerRandomDefense.DI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -17,7 +18,7 @@ namespace PokerRandomDefense.Infrastructure
 
         protected virtual void Awake()
         {
-            lifetimeScope = LifetimeScope.Find<InGameLifeTimeScope>();
+            lifetimeScope = LifetimeScope.Find<InGameScope>();
             Initialze(amountToPool);
         }
 

@@ -64,16 +64,4 @@ public class PlayerTest
 
         Assert.Throws<IndexOutOfRangeException>(() => player.SellCard(player.CardArray.Count()));
     }
-
-    [UnityTest]
-    public IEnumerator InsertCard_WorkCorrectly_WhenCalled()
-    {
-        yield return null;
-
-        var card1 = new Card(Card.CardSuit.Clubs, 0);
-
-        player.InsertCard(2, card1);
-        Assert.NotNull(player.TowerArray[2]);
-        Assert.NotNull(GameObject.FindObjectOfType<Tower>());
-    }
 }

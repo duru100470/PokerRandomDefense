@@ -9,8 +9,15 @@ namespace PokerRandomDefense.GamePlay
     {
         [Inject]
         public EnemyFactory EnemyFactory { get; set; }
+        [SerializeField]
+        private int maxHealth;
         public int Health { get; set; }
         public int Damage { get; set; }
+
+        protected virtual void Awake()
+        {
+            Health = maxHealth;
+        }
 
         protected virtual void Update()
         {
