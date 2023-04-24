@@ -6,17 +6,17 @@ using VContainer;
 
 namespace PokerRandomDefense.UI
 {
-    public class MarketView : MonoBehaviour
+    public class HandView : MonoBehaviour
     {
         [Inject]
-        private readonly Market _market;
+        private readonly Player _player;
         private CardSlot[] slots;
 
         private void Start()
         {
             slots = GetComponentsInChildren<CardSlot>();
-            _market.CardArray.OnValueChanged += UpdateSlots;
-            _market.CardArray.Notify();
+            _player.CardArray.OnValueChanged += UpdateSlots;
+            _player.CardArray.Notify();
         }
 
         private void UpdateSlots(Card[] prevCards, Card[] cards)

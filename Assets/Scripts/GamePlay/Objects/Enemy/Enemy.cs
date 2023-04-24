@@ -35,7 +35,7 @@ namespace PokerRandomDefense.GamePlay
             if (!collision.CompareTag("Player")) return;
             collision.GetComponent<Player>().GetDamage(Damage);
 
-            Destroy(gameObject);
+            EnemyFactory.Destroy(this);
         }
     }
 }

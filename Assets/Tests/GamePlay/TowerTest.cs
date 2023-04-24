@@ -21,7 +21,7 @@ public class TowerTest
         tower.Insert(card2);
         tower.Insert(card3);
 
-        Assert.AreEqual(3, tower.Cards.Count);
+        Assert.AreEqual(3, tower.Cards.Value.Count);
 
         tower.Insert(card4);
 
@@ -30,7 +30,7 @@ public class TowerTest
 
         tower.Insert(card5);
 
-        foreach (var card in tower.Cards)
+        foreach (var card in tower.Cards.Value)
         {
             Assert.NotNull(card);
         }

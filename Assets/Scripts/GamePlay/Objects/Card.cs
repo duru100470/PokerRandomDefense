@@ -24,5 +24,11 @@ namespace PokerRandomDefense.GamePlay
             Suit = suit;
             Index = index;
         }
+
+        public Card(CardSuit suit, int index, int price) : this(suit, index)
+            => Price = price;
+
+        public Card(CardSuit suit, int index, int price, int stat) : this(suit, index, price)
+            => Stat = stat;
     }
 }

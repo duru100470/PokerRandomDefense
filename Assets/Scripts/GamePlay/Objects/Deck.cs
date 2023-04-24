@@ -22,7 +22,7 @@ namespace PokerRandomDefense.GamePlay
             {
                 for (int i = 0; i < 13; i++)
                 {
-                    deck.Add(new Card(suit, i));
+                    deck.Add(new Card(suit, i, 2));
                 }
             }
 
