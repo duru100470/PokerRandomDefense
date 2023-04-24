@@ -9,8 +9,15 @@ namespace PokerRandomDefense.GamePlay
     {
         [Inject]
         public EnemyFactory EnemyFactory { get; set; }
+        [SerializeField]
+        private int maxHealth;
         public int Health { get; set; }
-        public int Damage { get; set; }
+        public int Damage { get; set; } = 2;
+
+        protected virtual void Awake()
+        {
+            Health = maxHealth;
+        }
 
         protected virtual void Update()
         {
@@ -28,7 +35,7 @@ namespace PokerRandomDefense.GamePlay
             if (!collision.CompareTag("Player")) return;
             collision.GetComponent<Player>().GetDamage(Damage);
 
-            Destroy(gameObject);
+            EnemyFactory.Destroy(this);
         }
     }
 }

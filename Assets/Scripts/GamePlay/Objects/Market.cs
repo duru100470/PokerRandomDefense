@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PokerRandomDefense.GamePlay.Stats;
+using PokerRandomDefense.Infrastructure;
 using UnityEngine;
 using VContainer;
 
@@ -11,13 +12,13 @@ namespace PokerRandomDefense.GamePlay
     {
         private readonly GameStats _gameStats;
         private readonly IDeck _deck;
-        private Card[] cardArray;
         [SerializeField]
         private int availableCardCount = 5;
         [SerializeField]
         private int rerollPrice = 2;
+        private ReactData<Card[]> cardArray;
 
-        public Card[] CardArray => cardArray;
+        public ReactData<Card[]> CardArray => cardArray;
 
         public Market(GameStats gameStats, IDeck deck)
         {
@@ -25,34 +26,38 @@ namespace PokerRandomDefense.GamePlay
             _deck = deck;
 
             // Init cards for sale
-            cardArray = new Card[availableCardCount];
+            cardArray = new ReactData<Card[]>(new Card[availableCardCount]);
             for (int i = 0; i < availableCardCount; i++)
             {
-                cardArray[i] = _deck.Draw();
+                cardArray.Value[i] = _deck.Draw();
             }
         }
 
         public Card Buy(int index)
         {
-            Card card = cardArray[index];
+            Card card = cardArray.Value[index];
             if (card is null) return null;
 
-            if (_gameStats.Gold < card.Price) throw new NotEnoughGoldException();
+            if (_gameStats.Gold.Value < card.Price) throw new NotEnoughGoldException();
 
-            _gameStats.Gold -= card.Price;
-            cardArray[index] = null;
+            _gameStats.Gold.Value -= card.Price;
+            cardArray.Value[index] = null;
 
+            cardArray.Notify();
             return card;
         }
 
         public void Reroll()
         {
-            if (_gameStats.Gold < rerollPrice) throw new NotEnoughGoldException();
+            if (_gameStats.Gold.Value < rerollPrice) throw new NotEnoughGoldException();
+            _gameStats.Gold.Value -= 2;
 
             for (int i = 0; i < 5; i++)
             {
-                cardArray[i] = _deck.Draw();
+                cardArray.Value[i] = _deck.Draw();
             }
+
+            cardArray.Notify();
         }
 
         public class NotEnoughGoldException : Exception { }

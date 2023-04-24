@@ -12,9 +12,9 @@ namespace PokerRandomDefense.GamePlay
         public ProjectileFactory projectileFactory;
         private Movement2D movement2D;
         private Transform target;
-        private float damage;
+        private int damage;
 
-        public void Init(Transform target, float damage)
+        public void Init(Transform target, int damage)
         {
             movement2D = GetComponent<Movement2D>();
             this.target = target;
@@ -23,21 +23,22 @@ namespace PokerRandomDefense.GamePlay
 
         private void Update()
         {
-            if (target != null)
+            if (target.gameObject.activeInHierarchy)
             {
                 Vector3 direction = (target.position - transform.position).normalized;
                 movement2D.MoveTo(direction);
             }
             else
             {
-                Destroy(gameObject);
+                projectileFactory.Destroy(this);
             }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.CompareTag("Enemy")) return;
-            collision.GetComponent<Enemy>();
+            var enemy = collision.GetComponent<Enemy>();
+            enemy.GetDamage(damage);
 
             projectileFactory.Destroy(this);
         }

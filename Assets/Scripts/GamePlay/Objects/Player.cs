@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PokerRandomDefense.DI;
 using PokerRandomDefense.GamePlay.Stats;
+using PokerRandomDefense.Infrastructure;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -15,7 +17,8 @@ namespace PokerRandomDefense.GamePlay
         private readonly GameStats _gameStats;
         [Inject]
         private readonly Market _market;
-        private Card[] cardArray;
+        private LifetimeScope _scope;
+        private ReactData<Card[]> cardArray;
         private Tower[] towerArray;
         [SerializeField]
         private int handCount = 7; // Change to inject in GameStats
@@ -23,24 +26,26 @@ namespace PokerRandomDefense.GamePlay
         private int towerCount = 5; // Change to inject in GameStats
         [SerializeField]
         private GameObject towerPrefab;
+        [SerializeField]
+        private Transform[] towerPosition;
 
-        public Card[] CardArray => cardArray;
+        public ReactData<Card[]> CardArray => cardArray;
         public Tower[] TowerArray => towerArray;
 
         private void Awake()
         {
-            cardArray = new Card[handCount];
+            cardArray = new ReactData<Card[]>(new Card[handCount]);
             towerArray = new Tower[towerCount];
 
-            Test();
+            _scope = LifetimeScope.Find<InGameScope>();
         }
 
         public void BuyCard(int index)
         {
             int empty = -1;
-            for (int i = 0; i < cardArray.Count(); i++)
+            for (int i = 0; i < cardArray.Value.Count(); i++)
             {
-                if (cardArray[i] == null)
+                if (cardArray.Value[i] == null)
                 {
                     empty = i;
                     break;
@@ -51,25 +56,33 @@ namespace PokerRandomDefense.GamePlay
             var card = _market.Buy(index);
             if (card == null) return;
 
-            cardArray[empty] = card;
+            cardArray.Value[empty] = card;
+            cardArray.Notify();
         }
 
         public void SellCard(int index)
         {
-            _gameStats.Gold += cardArray[index].Price / 2;
-            cardArray[index] = null;
+            _gameStats.Gold.Value += cardArray.Value[index].Price / 2;
+            cardArray.Value[index] = null;
+            cardArray.Notify();
         }
 
-        public void InsertCard(int towerIndex, Card card)
+        public void InsertCard(int towerIndex, int cardIndex)
         {
             if (towerArray[towerIndex] == null)
             {
-                var lifetimeScope = LifetimeScope.Find<InGameLifeTimeScope>();
-                towerArray[towerIndex] = lifetimeScope.Container
-                    .Instantiate(towerPrefab).GetComponent<Tower>();
+                towerArray[towerIndex] = _scope.Container
+                    .Instantiate(towerPrefab, towerPosition[towerIndex]).GetComponent<Tower>();
             }
 
-            towerArray[towerIndex].TryInsert(card);
+            if (cardArray.Value[cardIndex] == null)
+                return;
+
+            if (towerArray[towerIndex].TryInsert(cardArray.Value[cardIndex]))
+            {
+                cardArray.Value[cardIndex] = null;
+                cardArray.Notify();
+            }
         }
 
         public void DestroyTower(int index)
@@ -81,12 +94,7 @@ namespace PokerRandomDefense.GamePlay
 
         public void GetDamage(int amount)
         {
-            _gameStats.Health -= amount;
-        }
-
-        public void Test()
-        {
-            InsertCard(0, new Card(Card.CardSuit.Clubs, 0));
+            _gameStats.Health.Value -= amount;
         }
     }
 }

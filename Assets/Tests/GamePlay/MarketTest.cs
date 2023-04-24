@@ -38,28 +38,28 @@ public class MarketTest
         gameStats = new GameStats();
         market = new Market(gameStats, deck);
 
-        gameStats.Gold = 20;
+        gameStats.Gold.Value = 20;
         int gold = 20;
 
-        foreach (var c in market.CardArray)
+        foreach (var c in market.CardArray.Value)
         {
             Assert.NotNull(c);
         }
-        Assert.Throws<IndexOutOfRangeException>(() => market.Buy(market.CardArray.Count()));
+        Assert.Throws<IndexOutOfRangeException>(() => market.Buy(market.CardArray.Value.Count()));
 
-        var test1 = market.CardArray[0];
+        var test1 = market.CardArray.Value[0];
         var card = market.Buy(0);
         gold -= card.Price;
 
         Assert.NotNull(card);
         Assert.That(test1 == card);
-        Assert.That(gold == gameStats.Gold);
+        Assert.That(gold == gameStats.Gold.Value);
 
         card = market.Buy(0);
         Assert.IsNull(card);
-        Assert.That(gold == gameStats.Gold);
+        Assert.That(gold == gameStats.Gold.Value);
 
-        gameStats.Gold = 0;
+        gameStats.Gold.Value = 0;
         Assert.Throws<Market.NotEnoughGoldException>(() => market.Buy(1));
     }
 
@@ -70,21 +70,21 @@ public class MarketTest
         gameStats = new GameStats();
         market = new Market(gameStats, deck);
 
-        gameStats.Gold = 100;
+        gameStats.Gold.Value = 100;
         market.Buy(0);
-        Assert.That(deck.Count == 52 - market.CardArray.Count());
+        Assert.That(deck.Count == 52 - market.CardArray.Value.Count());
 
-        Assert.Null(market.CardArray[0]);
+        Assert.Null(market.CardArray.Value[0]);
         market.Reroll();
-        Assert.NotNull(market.CardArray[0]);
+        Assert.NotNull(market.CardArray.Value[0]);
 
-        var test = market.CardArray[1];
-        Assert.That(deck.Count == 52 - market.CardArray.Count() * 2);
+        var test = market.CardArray.Value[1];
+        Assert.That(deck.Count == 52 - market.CardArray.Value.Count() * 2);
         market.Reroll();
-        Assert.That(test != market.CardArray[1]);
-        Assert.That(deck.Count == 52 - market.CardArray.Count() * 3);
+        Assert.That(test != market.CardArray.Value[1]);
+        Assert.That(deck.Count == 52 - market.CardArray.Value.Count() * 3);
 
-        gameStats.Gold = 0;
+        gameStats.Gold.Value = 0;
         Assert.Throws<Market.NotEnoughGoldException>(() => market.Reroll());
     }
 }
