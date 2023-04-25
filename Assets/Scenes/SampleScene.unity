@@ -1669,6 +1669,7 @@ MonoBehaviour:
   projectileFactory: {fileID: 1554195632}
   player: {fileID: 2011986594}
   userInputSender: {fileID: 1464277853}
+  waveSystem: {fileID: 640415411}
 --- !u!1 &1464277851
 GameObject:
   m_ObjectHideFlags: 0

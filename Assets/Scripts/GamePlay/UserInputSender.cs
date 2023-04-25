@@ -11,6 +11,8 @@ public class UserInputSender : MonoBehaviour
     private readonly Player _player;
     [Inject]
     private readonly Market _market;
+    [Inject]
+    private readonly WaveSystem _waveSystem;
 
     private int selected = 0;
 
@@ -44,5 +46,7 @@ public class UserInputSender : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)) _player.InsertCard(2, selected);
         if (Input.GetKeyDown(KeyCode.V)) _player.InsertCard(3, selected);
         if (Input.GetKeyDown(KeyCode.B)) _player.InsertCard(4, selected);
+
+        if (Input.GetKeyDown(KeyCode.P)) _waveSystem.StartWave();
     }
 }
