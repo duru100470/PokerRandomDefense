@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using PokerRandomDefense.GamePlay;
+using PokerRandomDefense.Infrastructure;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -10,23 +11,20 @@ namespace PokerRandomDefense.DI
     public class InGameScope : LifetimeScope
     {
         [SerializeField]
-        EnemyFactory enemyFactory;
+        private ObjectPoolingSystem objectPoolingSystem;
         [SerializeField]
-        ProjectileFactory projectileFactory;
+        private Player player;
         [SerializeField]
-        Player player;
+        private UserInputSender userInputSender;
         [SerializeField]
-        UserInputSender userInputSender;
-        [SerializeField]
-        WaveSystem waveSystem;
+        private WaveSystem waveSystem;
 
         protected override void Configure(IContainerBuilder builder)
         {
             // Initialize objects
             builder.Register<Deck>(Lifetime.Scoped).As<IDeck>();
             builder.Register<Market>(Lifetime.Scoped);
-            builder.RegisterComponent<EnemyFactory>(enemyFactory);
-            builder.RegisterComponent<ProjectileFactory>(projectileFactory);
+            builder.RegisterComponent<ObjectPoolingSystem>(objectPoolingSystem);
             builder.RegisterComponent<Player>(player);
             builder.RegisterComponent<UserInputSender>(userInputSender);
             builder.RegisterComponent<WaveSystem>(waveSystem);

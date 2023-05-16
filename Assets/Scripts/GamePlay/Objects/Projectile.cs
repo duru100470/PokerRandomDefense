@@ -9,7 +9,7 @@ namespace PokerRandomDefense.GamePlay
     public class Projectile : MonoBehaviour
     {
         [Inject]
-        public ProjectileFactory projectileFactory;
+        public ObjectPoolingSystem _pools;
         private Movement2D movement2D;
         private Transform target;
         private int damage;
@@ -30,7 +30,7 @@ namespace PokerRandomDefense.GamePlay
             }
             else
             {
-                projectileFactory.Destroy(this);
+                _pools[ObjectList.Projectile].Destroy(this.gameObject);
             }
         }
 
@@ -40,7 +40,7 @@ namespace PokerRandomDefense.GamePlay
             var enemy = collision.GetComponent<Enemy>();
             enemy.GetDamage(damage);
 
-            projectileFactory.Destroy(this);
+            _pools[ObjectList.Projectile].Destroy(this.gameObject);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PokerRandomDefense.Infrastructure;
 using UnityEngine;
 using VContainer;
 
@@ -11,9 +12,7 @@ namespace PokerRandomDefense.GamePlay
         Tower tower;
         TowerState curState;
         [Inject]
-        public EnemyFactory enemyFactory;
-        [Inject]
-        public ProjectileFactory projectileFactory;
+        public ObjectPoolingSystem _pools;
 
         private void Awake()
         {
@@ -45,8 +44,8 @@ namespace PokerRandomDefense.GamePlay
 
         private void SpawnProjectile(Transform attackTarget)
         {
-            var projectile = projectileFactory.Instantiate(this.transform.position, Quaternion.identity);
-            projectile.Init(attackTarget, tower.Damage);
+            var projectile = _pools[ObjectList.Projectile].Instantiate(this.transform.position, Quaternion.identity);
+            projectile.GetComponent<Projectile>().Init(attackTarget, tower.Damage);
         }
 
         private Transform FindClosestAttackTarget()
@@ -54,14 +53,14 @@ namespace PokerRandomDefense.GamePlay
             Transform attackTarget = null;
             float closestDistSqr = Mathf.Infinity;
 
-            for (int i = 0; i < enemyFactory.EnemyList.Count; i++)
+            for (int i = 0; i < _pools[ObjectList.Enemy].ObjList.Count; i++)
             {
-                float distance = Vector3.Distance(enemyFactory.EnemyList[i].transform.position, transform.position);
+                float distance = Vector3.Distance(_pools[ObjectList.Enemy].ObjList[i].transform.position, transform.position);
 
                 if (distance <= closestDistSqr)
                 {
                     closestDistSqr = distance;
-                    attackTarget = enemyFactory.EnemyList[i].transform;
+                    attackTarget = _pools[ObjectList.Enemy].ObjList[i].transform;
                 }
             }
 

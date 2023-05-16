@@ -16,9 +16,9 @@ namespace PokerRandomDefense.GamePlay
         private int availableCardCount = 5;
         [SerializeField]
         private int rerollPrice = 2;
-        private ReactData<Card[]> cardArray;
+        private Data<Card[]> cardArray;
 
-        public ReactData<Card[]> CardArray => cardArray;
+        public Data<Card[]> CardArray => cardArray;
 
         public Market(GameStats gameStats, IDeck deck)
         {
@@ -26,7 +26,7 @@ namespace PokerRandomDefense.GamePlay
             _deck = deck;
 
             // Init cards for sale
-            cardArray = new ReactData<Card[]>(new Card[availableCardCount]);
+            cardArray = new Data<Card[]>(new Card[availableCardCount]);
             for (int i = 0; i < availableCardCount; i++)
             {
                 cardArray.Value[i] = _deck.Draw();

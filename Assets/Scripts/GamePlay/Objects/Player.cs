@@ -18,7 +18,7 @@ namespace PokerRandomDefense.GamePlay
         [Inject]
         private readonly Market _market;
         private LifetimeScope _scope;
-        private ReactData<Card[]> cardArray;
+        private Data<Card[]> cardArray;
         private Tower[] towerArray;
         [SerializeField]
         private int handCount = 7; // Change to inject in GameStats
@@ -29,12 +29,12 @@ namespace PokerRandomDefense.GamePlay
         [SerializeField]
         private Transform[] towerPosition;
 
-        public ReactData<Card[]> CardArray => cardArray;
+        public Data<Card[]> CardArray => cardArray;
         public Tower[] TowerArray => towerArray;
 
         private void Awake()
         {
-            cardArray = new ReactData<Card[]>(new Card[handCount]);
+            cardArray = new Data<Card[]>(new Card[handCount]);
             towerArray = new Tower[towerCount];
 
             _scope = LifetimeScope.Find<InGameScope>();

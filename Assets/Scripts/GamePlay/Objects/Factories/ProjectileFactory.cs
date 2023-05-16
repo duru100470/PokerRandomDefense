@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PokerRandomDefense.GamePlay
 {
-    public class ProjectileFactory : ObjectPool<Projectile>
+    public class ProjectileFactory
     {
     }
 }
