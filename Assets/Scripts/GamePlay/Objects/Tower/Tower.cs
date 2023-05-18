@@ -8,14 +8,14 @@ namespace PokerRandomDefense.GamePlay
 {
     public class Tower : MonoBehaviour
     {
-        private readonly ReactData<List<Card>> cards = new ReactData<List<Card>>(new List<Card>());
+        private readonly Data<List<Card>> cards = new Data<List<Card>>(new List<Card>());
         private (int, int) rank = (0, 0);
         private float atkSpeed = 1f; // Todo: Inject from GameStats
 
         public int Damage => (rank.Item1 + 1) * rank.Item2;
         public (int, int) Rank => rank;
         public float AtkSpeed => atkSpeed;
-        public ReactData<List<Card>> Cards => cards;
+        public Data<List<Card>> Cards => cards;
 
         public void Insert(Card card)
         {

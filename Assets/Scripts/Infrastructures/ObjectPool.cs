@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using PokerRandomDefense.DI;
 using UnityEngine;
 using VContainer;
@@ -7,101 +8,106 @@ using VContainer.Unity;
 
 namespace PokerRandomDefense.Infrastructure
 {
-    public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
+    public class ObjectPool : MonoBehaviour, IObjectPool
     {
-        LifetimeScope lifetimeScope;
-        Queue<T> objQueue = new Queue<T>();
+        private LifetimeScope lifetimeScope;
+        private Queue<GameObject> objQueue = new Queue<GameObject>();
+        private List<GameObject> objsInHierarchy = new List<GameObject>();
         [SerializeField]
-        int amountToPool = 20;
-        [SerializeField]
-        GameObject objToPool;
+        private GameObject objToPool;
 
-        protected virtual void Awake()
-        {
-            lifetimeScope = LifetimeScope.Find<InGameScope>();
-            Initialze(amountToPool);
-        }
+        public List<GameObject> ObjList
+            => objsInHierarchy.ToList();
 
-        private void Initialze(int amount)
+        public void Initialze(int amount, LifetimeScope lifetimeScope, GameObject obj)
         {
+            this.lifetimeScope = lifetimeScope;
+            objToPool = obj;
+
             for (int i = 0; i < amount; i++)
             {
                 objQueue.Enqueue(CreateNewObject());
             }
         }
 
-        protected virtual T CreateNewObject()
+        protected virtual GameObject CreateNewObject()
         {
-            var obj = lifetimeScope.Container.Instantiate(objToPool, transform)
-                .GetComponent<T>();
-            obj.gameObject.SetActive(false);
+            var obj = lifetimeScope.Container.Instantiate(objToPool, transform);
+            obj.SetActive(false);
             return obj;
         }
 
-        public virtual T Instantiate()
+        public virtual GameObject Instantiate()
         {
             if (objQueue.Count > 0)
             {
                 var obj = objQueue.Dequeue();
                 obj.transform.SetParent(null);
-                obj.gameObject.SetActive(true);
+                obj.SetActive(true);
+                objsInHierarchy.Add(obj);
                 return obj;
             }
             else
             {
                 var newObj = CreateNewObject();
-                newObj.gameObject.SetActive(true);
+                newObj.SetActive(true);
                 newObj.transform.SetParent(null);
+                objsInHierarchy.Add(newObj);
                 return newObj;
             }
         }
 
-        public virtual T Instantiate(Vector3 position)
+        public virtual GameObject Instantiate(Vector3 position)
         {
             if (objQueue.Count > 0)
             {
                 var obj = objQueue.Dequeue();
                 obj.transform.SetParent(null);
-                obj.gameObject.SetActive(true);
+                obj.SetActive(true);
                 obj.transform.position = position;
+                objsInHierarchy.Add(obj);
                 return obj;
             }
             else
             {
                 var newObj = CreateNewObject();
-                newObj.gameObject.SetActive(true);
+                newObj.SetActive(true);
                 newObj.transform.SetParent(null);
                 newObj.transform.position = position;
+                objsInHierarchy.Add(newObj);
                 return newObj;
             }
         }
 
-        public virtual T Instantiate(Vector3 position, Quaternion rotation)
+        public virtual GameObject Instantiate(Vector3 position, Quaternion rotation)
         {
             if (objQueue.Count > 0)
             {
                 var obj = objQueue.Dequeue();
                 obj.transform.SetParent(null);
-                obj.gameObject.SetActive(true);
+                obj.SetActive(true);
                 obj.transform.position = position;
                 obj.transform.rotation = rotation;
+                objsInHierarchy.Add(obj);
                 return obj;
             }
             else
             {
                 var newObj = CreateNewObject();
-                newObj.gameObject.SetActive(true);
+                newObj.SetActive(true);
                 newObj.transform.SetParent(null);
                 newObj.transform.position = position;
                 newObj.transform.rotation = rotation;
+                objsInHierarchy.Add(newObj);
                 return newObj;
             }
         }
 
-        public virtual void Destroy(T obj)
+        public virtual void Destroy(GameObject obj)
         {
-            obj.gameObject.SetActive(false);
+            obj.SetActive(false);
             obj.transform.SetParent(transform);
+            objsInHierarchy.Remove(obj);
             objQueue.Enqueue(obj);
         }
     }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace PokerRandomDefense.Infrastructure
 {
-    public class ReactData<T>
+    public class Data<T>
     {
         private T data = default;
         public delegate void DataEventHandler(T oldData, T newData);
         public event DataEventHandler OnValueChanged;
 
-        public ReactData() { }
-        public ReactData(T data) => this.data = data;
+        public Data() { }
+        public Data(T data) => this.data = data;
 
         public T Value
         {

@@ -7,8 +7,8 @@ namespace PokerRandomDefense.GamePlay.Stats
 {
     public class GameStats
     {
-        public ReactData<int> Health { get; set; } = new ReactData<int>(20);
-        public ReactData<int> Wave { get; set; } = new ReactData<int>(1);
-        public ReactData<int> Gold { get; set; } = new ReactData<int>(200);
+        public Data<int> Health { get; set; } = new Data<int>(20);
+        public Data<int> Wave { get; set; } = new Data<int>(1);
+        public Data<int> Gold { get; set; } = new Data<int>(20);
     }
 }
